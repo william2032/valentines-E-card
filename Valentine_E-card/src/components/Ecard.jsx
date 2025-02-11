@@ -27,7 +27,12 @@ export default function ECard() {
                     textColor: 'text-pink-600',
                     messageStyle: 'font-comic'
                 };
-
+            case 'friends':
+                return {
+                    background: 'bg-gradient-to-br from-yellow-200 via-orange-200 to-yellow-100',
+                    textColor: 'text-orange-600',
+                    messageStyle: 'font-sans'
+                };
             default:
                 return {
                     background: 'bg-gradient-to-br from-pink-300 via-rose-300 to-red-200',
@@ -59,18 +64,27 @@ export default function ECard() {
                     onClick={() => setIsOpen(!isOpen)}>
 
                     {/* Left Page (Cover) */}
-                    <div className={`page left-page ${isOpen ? 'left-page-open' : ''}`}>
-                        <div className="relative h-full flex items-center justify-center">
+                    <div className={`page left-page cursor-pointer ${isOpen ? 'left-page-open ' : ''}`}>
+                        <div className="relative h-full flex items-center justify-center group">
                             <img
                                 src="/bear-hug.jpeg"
                                 alt="bear hug"
                                 className="h-full w-full object-cover rounded-2xl md:rounded-l-2xl md:rounded-r-none"
                             />
+                            <span className="absolute opacity-0 group-hover:opacity-100 
+                                bg-gradient-to-r from-red-500 to-pink-500 text-white 
+                                px-4 py-2 rounded-full text-sm font-medium
+                                transform -translate-y-1 group-hover:-translate-y-2
+                                shadow-lg backdrop-blur-sm
+                                transition-all duration-300 ease-out pointer-events-none
+                                border border-white/20">
+                                ✨ Click to open card ✨
+                            </span>
                         </div>
                     </div>
 
                     {/* Right Page (Message) */}
-                    <div className="page right-page">
+                    <div className={`page right-page ${isOpen ? 'right-page-open' : ''}`}>
                         <div className="bg-white h-full p-4 md:p-6 rounded-2xl md:rounded-l-none md:rounded-r-2xl shadow-xl text-center flex flex-col justify-between">
 
                             <div className="border-4 border-dotted border-pink-300 h-full rounded-xl p-8 flex flex-col justify-between">
