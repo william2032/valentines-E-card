@@ -33,12 +33,7 @@ export default function Edit() {
                     textColor: 'text-pink-600',
                     messageStyle: 'font-comic'
                 };
-            case 'friends':
-                return {
-                    background: 'bg-gradient-to-br from-yellow-200 via-orange-200 to-yellow-100',
-                    textColor: 'text-orange-600',
-                    messageStyle: 'font-sans'
-                };
+
             default:
                 return {
                     background: 'bg-gradient-to-br from-pink-300 via-rose-300 to-red-200',
