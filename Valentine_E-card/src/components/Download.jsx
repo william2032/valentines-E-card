@@ -94,17 +94,17 @@ const Download = ({ cardRef }) => {
     };
 
     return (
-        <div className="absolute top-4 right-4">
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-50">
             <button
                 onClick={handleDownload}
-                className="p-3 bg-white rounded-full shadow-lg 
+                className="p-2 sm:p-3 bg-white rounded-full shadow-lg 
                 hover:shadow-xl hover:scale-105 active:scale-95
                 transition-all duration-300 ease-in-out
                 text-pink-500 hover:text-pink-600
-                hover:bg-pink-50 z-10"
+                hover:bg-pink-50 z-50"
                 title="Download Card"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
             </button>
