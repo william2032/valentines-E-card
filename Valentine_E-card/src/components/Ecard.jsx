@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Download from './Download';
 
 export default function ECard() {
     const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const cardRef = useRef(null);
 
     // Get data from location state or use defaults
     const { message = "Happy Valentine's Day!",
@@ -58,8 +60,9 @@ export default function ECard() {
 
     return (
         <div className={`min-h-screen flex flex-col items-center justify-center p-4 md:p-6 ${designStyles.background} animate-gradient relative`}>
+            <Download cardRef={cardRef} />
 
-            <div className="relative w-full max-w-[350px] md:max-w-[1000px] h-[500px] md:h-[700px]">
+            <div ref={cardRef} className="relative w-full max-w-[350px] md:max-w-[1000px] h-[500px] md:h-[700px]">
                 <div className={`book-container ${isOpen ? 'book-open' : ''}`}
                     onClick={() => setIsOpen(!isOpen)}>
 
@@ -71,7 +74,7 @@ export default function ECard() {
                                 alt="bear hug"
                                 className="h-full w-full object-cover rounded-2xl md:rounded-l-2xl md:rounded-r-none"
                             />
-                            <span className="absolute opacity-0 group-hover:opacity-100 
+                            <span className="absolute md:opacity-0 opacity-70 group-hover:opacity-100 
                                 bg-gradient-to-r from-red-500 to-pink-500 text-white 
                                 px-4 py-2 rounded-full text-sm font-medium
                                 transform -translate-y-1 group-hover:-translate-y-2
@@ -97,7 +100,10 @@ export default function ECard() {
                                                 className="w-48 h-48 object-cover rounded-lg shadow-md"
                                             />
                                             <button
-                                                onClick={() => setSelectedImage(null)}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setSelectedImage(null);
+                                                }}
                                                 className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
